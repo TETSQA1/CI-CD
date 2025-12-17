@@ -1,26 +1,28 @@
-name: CI Pipeline
+name: API Automation Daily
 
 on:
-  push:
-    branches: [ main ]
+  schedule:
+    - cron: '0 12 * * *'   # Runs every day at 12 PM UTC
+  workflow_dispatch:        # Allows manual run
 
 jobs:
-  build:
+  run-api-script:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repo
+      uses: actions/checkout@v4
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 18
+        node-version: 18   # If Node.js, change for Python
 
     - name: Install dependencies
-      run: npm install
+      run: npm install      # Only if needed
 
-    - name: Run tests
-      run: npm test
+    - name: Run API automation script
+      run: node scripts/api_automation.js   # Or python scripts/api_automation.py
 
-    - name: Build project
-      run: npm run build
+    - name: Save results
+      run: mkdir -p results
