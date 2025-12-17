@@ -1,0 +1,13 @@
+{
+  "name": "ci-cd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+      "test": "echo \"Tests passed\"",
+      "build": "echo \"Build successful\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
